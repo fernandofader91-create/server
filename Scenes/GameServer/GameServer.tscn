@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgbxip38p7s4t"]
+
+[ext_resource type="Script" path="res://Scenes/GameServer/GameServer.gd" id="1_r1fc2"]
+[ext_resource type="PackedScene" uid="uid://xeou18sgamnt" path="res://Scenes/Maps/ServerMapa1.tscn" id="3_18osl"]
+[ext_resource type="Script" path="res://Scenes/GameServer/camera_2d.gd" id="4_24uh0"]
+[ext_resource type="Script" path="res://Scenes/GameServer/StateProcessing.gd" id="5_dex35"]
+[ext_resource type="PackedScene" uid="uid://cdr5a66lqlt3c" path="res://Scenes/Maps/ServerMapa2.tscn" id="5_k3q6e"]
+
+[node name="GameServer" type="Node"]
+script = ExtResource("1_r1fc2")
+
+[node name="StateProcessing" type="Node" parent="."]
+script = ExtResource("5_dex35")
+
+[node name="ContainerPlayers" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="ContainerMaps" type="GridContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1156.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="Mapa1" parent="ContainerMaps" instance=ExtResource("3_18osl")]
+layout_mode = 2
+map_id = "Mapa1"
+enemy_maximum = 0
+
+[node name="Teleport" parent="ContainerMaps/Mapa1/Node/MapElements" index="0"]
+mapa_actual = "Mapa1"
+mapa_siguiente = "Mapa2"
+
+[node name="Mapa2" parent="ContainerMaps" instance=ExtResource("5_k3q6e")]
+layout_mode = 2
+map_id = "Mapa2"
+enemy_maximum = 2
+map_offset = Vector2(1156, 0)
+
+[node name="Teleport" parent="ContainerMaps/Mapa2/Node/MapElements" index="0"]
+mapa_actual = "Mapa2"
+mapa_siguiente = "Mapa1"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+script = ExtResource("4_24uh0")
+
+[node name="ContainerArenas" type="GridContainer" parent="."]
+anchors_preset = -1
+anchor_left = -1.0
+anchor_right = -1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[editable path="ContainerMaps/Mapa1"]
+[editable path="ContainerMaps/Mapa2"]

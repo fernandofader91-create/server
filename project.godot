@@ -1,0 +1,38 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="ServerDigiMMO_0.2"
+run/main_scene="res://Scenes/GameServer/GameServer.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+HubConnection="*res://Scenes/Singletons/HubConnection.gd"
+HttpSingleton="*res://Scenes/Singletons/HttpSingleton.gd"
+ServerData="*res://Scenes/Singletons/ServerData.gd"
+
+[layer_names]
+
+2d_physics/layer_4="MeleeAttack"
+2d_physics/layer_5="EnemyHurtbox"
+2d_physics/layer_6="RangedST"
+2d_physics/layer_7="PlayerDetectionZone"
+2d_physics/layer_8="PlayerBody"
+2d_physics/layer_9="EnemyBody"
+2d_physics/layer_10="Teleport"
+2d_physics/layer_11="LifeFount"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

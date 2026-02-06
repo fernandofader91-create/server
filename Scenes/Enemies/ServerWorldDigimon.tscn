@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cudsigrdflqvu"]
+
+[ext_resource type="Texture2D" uid="uid://cv6fhrtohhrs1" path="res://Resources/Players/Ciclop.png" id="1_1tvx8"]
+[ext_resource type="Script" path="res://Scenes/Enemies/ServerWorldDigimon.gd" id="1_3kp2n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8gfg5"]
+radius = 20.0
+
+[node name="ServerWorldDigimon" type="CharacterBody2D"]
+z_as_relative = false
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_3kp2n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_1tvx8")
+offset = Vector2(0, -16)
+hframes = 10
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_8gfg5")
+disabled = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 1.0
+target_desired_distance = 1.0
+path_max_distance = 200.0
+avoidance_mask = 0
+debug_enabled = true
+debug_path_custom_color = Color(0.647245, 0, 0.216602, 1)
+debug_path_custom_line_width = 4.0

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://csob8p5jntupl"]
+
+[ext_resource type="Script" path="res://Scenes/GameServer/PlayerContainer.gd" id="1_voba2"]
+
+[node name="PlayerContainer" type="Node"]
+script = ExtResource("1_voba2")
